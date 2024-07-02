@@ -1,5 +1,5 @@
-import * as chat from "./chat";
+import * as biens from "./biens";
 
 export const commands = {
-  chat,
+  biens: biens,
 };

@@ -8,7 +8,6 @@ const client = new Client({
 });
 
 client.once("ready", () => {
-  console.log(config);
   console.log("Discord bot is ready! 🤖");
 });
 
@@ -17,10 +16,13 @@ client.on("guildCreate", async (guild) => {
 });
 
 client.on("interactionCreate", async (interaction) => {
+  console.log("interactionCreate : ", interaction.isCommand());
   if (!interaction.isCommand()) {
     return;
   }
   const { commandName } = interaction;
+  console.log("commandName : ", commandName, commands);
+
   if (commands[commandName as keyof typeof commands]) {
     commands[commandName as keyof typeof commands].execute(interaction);
   }
